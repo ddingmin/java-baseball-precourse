@@ -3,7 +3,8 @@ package baseball.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class UserInputNumbersTest {
     @Test
@@ -26,6 +27,14 @@ class UserInputNumbersTest {
     @DisplayName("입력된 값의 길이가 3이 아니라면, 예외를 던진다.")
     void create_fail_if_input_length_is_not_3() {
         var input = " ";
+
+        assertThrows(Exception.class, () -> UserInputNumbers.from(input));
+    }
+
+    @Test
+    @DisplayName("입력 숫자에 중복이 존재하면, 예외를 던진다.")
+    void create_fail_if_answer_numbers_has_duplication() {
+        var input = "112";
 
         assertThrows(Exception.class, () -> UserInputNumbers.from(input));
     }

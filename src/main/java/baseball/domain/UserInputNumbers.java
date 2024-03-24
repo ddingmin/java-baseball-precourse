@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class UserInputNumbers {
@@ -31,5 +32,12 @@ public class UserInputNumbers {
         if (gameNumbers.size() != 3) {
             throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
         }
+        if (hasDuplication(gameNumbers)) {
+            throw new IllegalArgumentException("입력 숫자에 중복된 숫자가 존재해선 안됩니다.");
+        }
+    }
+
+    private static boolean hasDuplication(List<GameNumber> gameNumbers) {
+        return new HashSet<>(gameNumbers).size() != gameNumbers.size();
     }
 }
