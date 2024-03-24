@@ -22,6 +22,16 @@ public class AnswerNumbers {
         return new AnswerNumbers(response);
     }
 
+    public AtBat calculateAtBat(GameNumber number, int index) {
+        if (gameNumbers.contains(number) && gameNumbers.indexOf(number) == index) {
+            return AtBat.STRIKE;
+        }
+        if (gameNumbers.contains(number)) {
+            return AtBat.BALL;
+        }
+        return AtBat.NOTHING;
+    }
+
     private void validate(List<GameNumber> gameNumbers) {
         if (gameNumbers.size() != 3) {
             throw new IllegalArgumentException("3자리 게임 숫자가 필요합니다.");
