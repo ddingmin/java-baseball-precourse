@@ -2,11 +2,15 @@ package baseball;
 
 import baseball.controller.BaseballGameController;
 import baseball.domain.GameCommand;
+import baseball.service.GameNumberGeneratorService;
 import baseball.view.Input;
+
+import java.util.Random;
 
 public class Application {
     public static void main(String[] args) {
-        BaseballGameController baseballGameController = new BaseballGameController();
+        GameNumberGeneratorService gameNumberGeneratorService = new GameNumberGeneratorService(new Random());
+        BaseballGameController baseballGameController = new BaseballGameController(gameNumberGeneratorService);
         GameCommand gameStatus = Input.command();
 
         while (gameStatus == GameCommand.START) {

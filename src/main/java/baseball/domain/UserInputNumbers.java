@@ -12,6 +12,10 @@ public class UserInputNumbers {
         this.gameNumbers = gameNumbers;
     }
 
+    public List<GameNumber> getGameNumbers() {
+        return gameNumbers;
+    }
+
     public static UserInputNumbers from(String input) {
         List<String> rawInputList = List.of(input.trim().split(""));
 
